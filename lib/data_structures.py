@@ -16,23 +16,32 @@ spicy_foods = [
     },
 ]
 
-def get_names(spicy_foods):
-    pass
+def get_names(spicy_foods): 
+    return [item['name'] for item in spicy_foods]
 
-def get_spiciest_foods(spicy_foods):
-    pass
 
-def print_spicy_foods(spicy_foods):
-    pass
+def get_spiciest_foods(spicy_foods): #returns a list of dicts where heat > 5
+    return [item for item in spicy_foods if item['heat_level'] > 5]
+
+def print_spicy_foods(spicy_foods): # Buffalo Wings (American) | Heat Level: 🌶🌶🌶
+    for items in [ f"{item['name']} ({item['cuisine']}) | Heat Level: {'🌶'*item['heat_level']}" for item in spicy_foods ]:
+        print(items)
 
 def get_spicy_food_by_cuisine(spicy_foods, cuisine):
-    pass
+    for food in spicy_foods:
+        if food['cuisine'] == cuisine:
+            return food
 
 def print_spiciest_foods(spicy_foods):
-    pass
+    for items in [ f"{item['name']} ({item['cuisine']}) | Heat Level: {'🌶'*item['heat_level']}" for item in spicy_foods if item['heat_level'] > 5]:
+        print(items)
 
 def get_average_heat_level(spicy_foods):
-    pass
+    avg = 0
+    for num in [item['heat_level'] for item in spicy_foods]:
+        avg += num
+    return avg / len(spicy_foods)
 
 def create_spicy_food(spicy_foods, spicy_food):
-    pass
+    spicy_foods.append(spicy_food)
+    return spicy_foods
